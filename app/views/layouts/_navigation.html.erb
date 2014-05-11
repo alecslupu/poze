@@ -18,24 +18,12 @@
           </form>
           <li class="divider-vertical"></li>
         </ul>
-        <ul class="nav pull-right">
-        <li class="divider-vertical"></li>
-        <li><a href="signin.html"><i class="icon-lock"></i> Sign in</a></li>
-        <li class="divider-vertical"></li>
-        <li><a href="signup.html"><i class="icon-edit"></i> Sign up</a></li>
-        <li class="divider-vertical"></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-        <li class="divider-vertical"></li>
-      </ul>
+
+        <% if user_signed_in? %>
+          <%= render 'layouts/logged_in' %>
+        <% else %>
+          <%= render 'layouts/logged_out' %>
+        <% end %>
       </div><!--/.nav-collapse -->
     </div>
   </div>

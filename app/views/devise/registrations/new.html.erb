@@ -1,11 +1,53 @@
-<h2>Sign up</h2>
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
-  <%= f.error_notification %>
-  <%= display_base_errors resource %>
-  <%= f.input :name, :autofocus => true %>
-  <%= f.input :email, :required => true %>
-  <%= f.input :password, :required => true %>
-  <%= f.input :password_confirmation, :required => true %>
-  <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
-<% end %>
-<%= render "devise/shared/links" %>
+
+<div class="account-container">
+  <div class="form-content clearfix">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+      <h1><i class="iconbig-note-write"></i> Sign Up</h1>
+
+      <%= render 'layouts/messages' %>
+      <%#= f.error_notification %>
+      <%= display_base_errors resource %>
+
+      <div class="login-fields">
+        <p>Sign up manually:</p>
+        <%= display_base_errors resource %>
+        <div class="field">
+          <label for="username">Username:</label>
+          <%= f.input_field :name, autofocus: true, class: 'login username-field', placeholder: 'Name' %>
+        </div> <!-- /field -->
+        <div class="field">
+          <label for="email">Email:</label>
+          <%= f.input_field :email, required: true, class: 'login email-field', placeholder: 'Email' %>
+        </div> <!-- /field -->
+
+        <div class="field">
+          <label for="password">Password:</label>
+          <%= f.input_field :password, required: true, class: 'login password-field', placeholder: 'Password' %>
+        </div> <!-- /password -->
+
+        <div class="field">
+          <label for="password">Password confirmation:</label>
+          <%= f.input_field :password_confirmation, required: true, class: 'login password-field', placeholder: 'Password confirmation' %>
+        </div> <!-- /password -->
+
+      </div> <!-- /login-fields -->
+      <div class="login-actions">
+        <%= f.button :submit, 'Sign up', class: 'btn-signin btn btn-primary' %>
+        <a href="<%= root_url %>" class="btn-signin btn">Cancel</a>
+      </div> <!-- .actions -->
+
+    <% end %>
+    <div class="login-social marg10-btm">
+
+      <p>Sign up using social network:</p>
+      <a href="<%=user_omniauth_authorize_path(:twitter)%>" class="btn"><%= image_tag("devise/social/twitter-18.png") %> Signin with twitter</a>
+      <a href="<%=user_omniauth_authorize_path(:facebook)%>" class="btn"><%= image_tag("devise/social/facebook-18.png") %> Signin with facebook</a>
+    </div>
+
+    <div class="marg10-btm">
+      <%= render 'devise/shared/links' %>
+    </div>
+
+  </div> <!-- /form-content -->
+</div> <!-- /account-container -->

@@ -1,37 +1,27 @@
 <div class="account-container btm10">
   <div class="form-content clearfix">
-    <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-      <h1><i class="iconbig-lock"></i> Sign In</h1>
+    <%= simple_form_for(resource, :as => resource_name, :url => unlock_path(resource_name)) do |f| %>
+      <h1><i class="iconbig-lock"></i> Unlock</h1>
       <%= render 'layouts/messages' %>
       <%= display_base_errors resource %>
 
       <div class="login-fields">
-        <p>Sign in using your registered account:</p>
+        <p>Resend unlock instructions:</p>
         <div class="field">
           <label for="email">Username:</label>
           <%= f.input_field :email, autofocus: true, class: 'login username-field', placeholder: 'Email' %>
         </div>
-        <!-- /field -->
-        <div class="field">
-          <label for="password">Password:</label>
-          <%= f.input_field :password, class: 'login password-field', placeholder: 'Password' %>
-        </div>
-
         <!-- /password -->
       </div>
       <!-- /login-fields -->
       <div class="login-actions">
-				<span class="login-checkbox">
-          <%= f.input_field :remember_me, as: :boolean, label: false, boolean_style: :inline, class: 'field login-checkbox', tabindex: 4 if devise_mapping.rememberable? %>
-					<label class="choice" for="user_remember_me">Keep me signed in</label>
-				</span>
-
-        <%= f.button :submit, "Sign in", :class => 'btn-signin btn btn-primary' %>
+        <%= f.button :submit,  "Resend", :class => 'btn-signin btn btn-primary' %>
         <a href="<%=root_path%>" class="btn-signin btn">Cancel</a>
       </div>
+
+      <!-- .actions -->
     <% end %>
 
-    <!-- .actions -->
     <div class="login-social marg10-btm">
       <p>Sign in using social network:</p>
       <a href="<%=user_omniauth_authorize_path(:twitter)%>" class="btn"><%= image_tag("devise/social/twitter-18.png") %> Signin with twitter</a>

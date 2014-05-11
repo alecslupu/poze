@@ -4,7 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = 'b285163d60eb71dbda0d859b5df0485465c0ace5962bc72fdbc173a180c6f4f68497e38a9502eda2b7f607046d637b9adebc76174b0cc72078b4f90b29398a99'
+  config.secret_key = 'b285163d60eb71dbda0d859b5df0485465c0ace5962bc72fdbc173a180c6f4f68497e38a9502eda2b7f607046d637b9adebc76174b0cc72078b4f90b29398a99'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -97,7 +97,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = 'dc58247b229a2e6ce70a37e47ba6348c234f551b8a1f3d8ca4120530e074e4b2a410f6395472d7fe009e713ad233eac3e27ce200890a3f4eab26994bcedab9e4'
+  config.pepper = 'dc58247b229a2e6ce70a37e47ba6348c234f551b8a1f3d8ca4120530e074e4b2a410f6395472d7fe009e713ad233eac3e27ce200890a3f4eab26994bcedab9e4'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -170,7 +170,7 @@ Devise.setup do |config|
 
   # Number of authentication tries before locking an account if lock_strategy
   # is failed attempts.
-  # config.maximum_attempts = 20
+  config.maximum_attempts = 5
 
   # Time interval to unlock the account if :time is enabled as unlock_strategy.
   # config.unlock_in = 1.hour
@@ -253,4 +253,7 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  require "omniauth-facebook"
+  config.omniauth :twitter,"RW02O0fBuP4VjAONJhOSw", "SAnfjkAXd0LqE65q6EQ8njqQ4Q0fBlGhUs6Re8Ds"
+  config.omniauth :facebook, "587210431309126", "c5ca1bf0ecf2b22c8a0161eebcf28017"
 end

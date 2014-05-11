@@ -731,11 +731,11 @@ div[class*=sidebar-detail-]{
 	box-shadow: inset 2px 2px 4px #f1f1f1;
 }
 
-.username-field { background: url(../img/user.png) no-repeat; }
+.username-field { background: image-url("user.png") no-repeat; }
 
-.password-field { background: url(../img/password.png) no-repeat; }
+.password-field { background: image-url("password.png") no-repeat; }
 
-.email-field { background: url(../img/email.png) no-repeat; }
+.email-field { background: image-url("email.png") no-repeat; }
 
 
 .login-actions {
@@ -763,6 +763,7 @@ span.login-checkbox {
 }
 
 span.login-checkbox > input[type='checkbox'] {
+
     opacity: 0;
     float: left;
     width: 15px;
@@ -771,15 +772,15 @@ span.login-checkbox > input[type='checkbox'] {
 span.login-checkbox > input[type='checkbox'] + label {
     clear: none;
 
-	height: 15px;
-	display: block;
+  	height: 15px;
+  	display: block;
     padding: 0 0 0 22px;
     margin: 0;
 
     font-size: 12px;
     line-height: 1.2em;
 
-    background: url(../img/check.png) no-repeat 0 0;
+    background: image-url("check.png") no-repeat 0 0;
 
     cursor: pointer;
 }

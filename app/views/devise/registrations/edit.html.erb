@@ -1,3 +1,97 @@
+<div class="container">
+  <div class="row">
+    <div class="span3 left-sidebar">
+      <div class="account-settings">
+        <% # TODO: Implement the avatar %>
+        <img src="img/gravatar.jpg" />
+      </div>
+      <% # TODO: Implement the sidebar %>
+      <div class="account-detail">
+        <p><strong>Sign up :</strong></p>
+        <p>3 weeks a go</p>
+        <p><strong>Location : </strong></p>
+        <p>California</p>
+        <p><strong>Website : </strong></p>
+        <p><a href="#">http://johndoe.com</a></p>
+        <hr />
+        <p><a href="profile.html">View Public Profile</a></p>
+      </div>
+    </div>
+
+    <div class="span9 content-setting">
+      <div class="content-settings">
+        <div class="tabbable"> <!-- Only required for left/right tabs -->
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
+            <li><a href="#suspend" data-toggle="tab">Suspend</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="profile"><!-- Profile -->
+              <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f| %>
+
+                <%= render 'layouts/messages' %>
+                <%= display_base_errors resource %>
+                <% # TODO: Implement the form features %>
+
+                <div class="control-group">
+                  <%= f.input :name, autofocus: true, autocomplete: "off", class: 'input-xlarge', label: "Your Name" %>
+                </div>
+                <div class="control-group">
+                  <%= f.input :username, autofocus: true, class: 'input-xlarge', label: "Username",
+                  hint: "Your Public Profile : http://yourdomain.com/profile/#{current_user.username}" %>
+                </div>
+                <div class="control-group">
+                  <%= f.input :email, autofocus: true, class: 'input-xlarge' %>
+                </div>
+                <div class="control-group">
+                  <%= f.input :website, autofocus: true, class: 'input-xlarge', label: 'Website' %>
+                </div>
+                <!--
+                <div class="control-group">
+                  <label class="control-label">About</label>
+                  <div class="controls">
+                    <textarea class="input-xlarge" id="textarea" rows="3">Lorem ipsum dolor sit amet.</textarea>
+                  </div>
+                </div>  -->
+                <div class="control-group">
+                  <label class="control-label">Avatar</label>
+                  <div class="controls">
+                    <input class="input-file" id="fileInput" type="file">
+                  </div>
+                </div>
+                <div class="control-group">
+                  <%= f.input :password, autocomplete: "off", class: 'input-xlarge', required: false, label: 'Enter New Password',
+                  hint: "leave it blank if you don't want to change it" %>
+                </div>
+                <div class="control-group">
+                  <%= f.input :password_confirmation, autocomplete: "off", class: 'input-xlarge', required: false, label: 'Confirm New Password' %>
+                </div>
+                <div class="control-group">
+                  <%= f.input :current_password, autocomplete: "off", class: 'input-xlarge', required: true, label: 'Your Password' %>
+                </div>
+                <div class="form-actions">
+                  <%= f.button :submit, 'Save Changes', :class => 'btn-primary' %>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="tab-pane" id="suspend">
+
+              <% # TODO: Add a well with some text warrning the user about what does this mean  %>
+              <div class="form-actions">
+                <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete , class: 'btn btn-danger'%>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- end tabbable -->
+      </div>
+    </div>
+  </div>
+</div>
+<%
+=begin
+
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
   <%= f.error_notification %>
@@ -12,3 +106,5 @@
 <h3>Cancel my account</h3>
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
 <%= link_to "Back", :back %>
+<%
+=end %>
