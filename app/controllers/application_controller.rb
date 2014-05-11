@@ -9,8 +9,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:account_update) << :username
-    devise_parameter_sanitizer.for(:account_update) << :name
+    %w(username name avatar avatar_cache remove_avatar website).each do |extra|
+      devise_parameter_sanitizer.for(:account_update) << extra.to_sym
+    end
   end
 
   private

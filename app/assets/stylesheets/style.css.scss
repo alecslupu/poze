@@ -4,23 +4,30 @@
  * Afriq Yasin Ramadhan
  */
 
- @font-face {
-			font-family: segoeuil;
-			src: url('../fonts/segoeuil.ttf');
-		}
- @font-face {
-			font-family: segoeui;
-			src: url('../fonts/segoeui.ttf');
-		}
- @font-face {
-			font-family: segoeuib;
-			src: url('../fonts/segoeuib.ttf');
-		}
+@font-face {
+  font: {
+    family: 'segoeuil';
+  }
+  src: asset-url('segoeuil.ttf');
+}
+@font-face {
+  font: {
+    family: 'segoeui';
+  }
+
+  src: asset-url('segoeui.ttf');
+}
+@font-face {
+  font: {
+    family: 'segoeuib';
+  }
+  src: asset-url('segoeuib.ttf');
+}
 
  body {
     padding-top: 70px;
-	background:#fafafa;
-    background: url(../img/body-bg.png) repeat;
+	  background:#fafafa;
+    background: image-url("body-bg.png") repeat;
     font-family:segoeui;
 	}
 
@@ -313,7 +320,7 @@ hr.alt{
 /* .: DETAIL :. */
 
 .navbar-fixed-top .nav .gravatar a,.navbar-fixed-top .nav .gravatar a:hover {
-background: url(../img/gravatar.jpg) left 5px no-repeat;
+background: image-url("gravatar.jpg") left 5px no-repeat;
 background-size:100%;
 height: 15px;
 width: 10px;
@@ -755,6 +762,10 @@ div[class*=sidebar-detail-]{
 	border: 1px solid #CCC;
 	border-right: none;
 	border-left: none;
+}
+
+.login-social .btn {
+  padding: 4px 8px;
 }
 
 span.login-checkbox {

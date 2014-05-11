@@ -3,16 +3,18 @@
     <div class="span3 left-sidebar">
       <div class="account-settings">
         <% # TODO: Implement the avatar %>
-        <img src="img/gravatar.jpg" />
+        <%= image_tag(resource.avatar.normal.url)%>
       </div>
       <% # TODO: Implement the sidebar %>
       <div class="account-detail">
         <p><strong>Sign up :</strong></p>
-        <p>3 weeks a go</p>
+        <p><%= time_ago_in_words(resource.created_at) %> ago</p>
         <p><strong>Location : </strong></p>
         <p>California</p>
-        <p><strong>Website : </strong></p>
-        <p><a href="#">http://johndoe.com</a></p>
+        <% if resource.website.present? %>
+          <p><strong>Website : </strong></p>
+          <p><a href="<%= resource.website %>" rel="nofollow" target="blank"><%= resource.website %></a></p>
+        <% end %>
         <hr />
         <p><a href="profile.html">View Public Profile</a></p>
       </div>
@@ -27,7 +29,7 @@
           </ul>
           <div class="tab-content">
             <div class="tab-pane active" id="profile"><!-- Profile -->
-              <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f| %>
+              <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :multipart => true, :method => :put, :class => 'form-horizontal' }) do |f| %>
 
                 <%= render 'layouts/messages' %>
                 <%= display_base_errors resource %>
@@ -54,11 +56,13 @@
                   </div>
                 </div>  -->
                 <div class="control-group">
-                  <label class="control-label">Avatar</label>
-                  <div class="controls">
-                    <input class="input-file" id="fileInput" type="file">
-                  </div>
+                  <%= f.input :avatar, as: :file %>
+                  <%= f.input_field :avatar_cache, as: :hidden %>
+                  <% if current_user.avatar.url.present? %>
+                    <%= f.input :remove_avatar, as: :boolean %>
+                  <% end %>
                 </div>
+
                 <div class="control-group">
                   <%= f.input :password, autocomplete: "off", class: 'input-xlarge', required: false, label: 'Enter New Password',
                   hint: "leave it blank if you don't want to change it" %>

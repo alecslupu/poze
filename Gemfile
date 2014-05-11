@@ -16,6 +16,9 @@ gem 'mysql2'
 gem 'pundit'
 gem 'simple_form'
 
+gem 'rmagick', :require => false
+gem 'carrierwave'
+
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
