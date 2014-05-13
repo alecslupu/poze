@@ -12,3 +12,25 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
 end
+
+
+=begin
+  /tags
+  /categories
+  /pictures
+  /newest
+  /tags/:name
+  /categories/:name
+  /users/:name
+  /pictures/:name
+  /top/pictures/popular
+  /top/pictures/viewed
+  /top/pictures/downloads
+  /top/pictures/comments
+  /top/pictures/liked
+  /pictures/:name/like
+  /pictures/:name/share
+  /pictures/:name/download
+  /pictures/:name/comments
+  /pictures/:name/comments/add
+=end

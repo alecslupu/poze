@@ -13,6 +13,10 @@
  *= require_self
  */
 
+ @import "fancybox/jquery.fancybox";
+ @import "fancybox/jquery.fancybox-buttons";
+ @import "fancybox/jquery.fancybox-thumbs";
+
  @import "bootstrap";
 
  @import "style";

@@ -14,4 +14,14 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require_tree .
+//= require jquery.mousewheel-3.0.6.pack
+//= require image-gallery
+//= require fancybox/jquery.fancybox
+//= require fancybox/jquery.fancybox-buttons
+//= require fancybox/jquery.fancybox-media
+//= require fancybox/jquery.fancybox-thumbs
+
+
+
+
+// = require_tree .
