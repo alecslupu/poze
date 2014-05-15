@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get '/users/auth/:provider' => 'user/omniauth_callbacks#passthru'
   end
 
+
   get '/about', to: 'home#index', as: :about
   get '/tos', to: 'home#index', as: :tos
   get '/privacy', to: 'home#index', as: :privacy
@@ -17,6 +18,7 @@ end
 
 
 =begin
+
   /tags
   /categories
   /pictures
