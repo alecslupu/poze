@@ -10,12 +10,13 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require fontawesome
+ *= require fancybox/jquery.fancybox
+ *= require fancybox/jquery.fancybox-buttons
+ *= require fancybox/jquery.fancybox-thumbs
  *= require_self
  */
 
- @import "fancybox/jquery.fancybox";
- @import "fancybox/jquery.fancybox-buttons";
- @import "fancybox/jquery.fancybox-thumbs";
 
  @import "bootstrap";
 
