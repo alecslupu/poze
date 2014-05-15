@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, UserUploader
 
+  def familiar_name
+    name.include?(' ') ? name.split(' ').first : name.first(10)
+  end
+
   def to_s
     name ? name : username
   end
@@ -26,40 +30,23 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    unless user
-      user = User.create({
-        # :username => auth.extra.raw_info.nickname,
-        :name => auth.extra.raw_info.name,
-        :email => auth.info.email,
-        :password => Devise.friendly_token[0,20]
-      })
-      user.provider = auth.provider
-      user.uid  = auth.uid
-      user.skip_confirmation!
-      user.save
-    end
+  def self.find_by_oauth(auth)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first_or_initialize
+    user.set_oauth_info(auth) if user.new_record?
+
     user
   end
 
-
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    unless user
-      user = User.create({
-        :username =>  auth.extra.raw_info.username,
-        :name => auth.extra.raw_info.name,
-        :email => auth.info.email,
-        :password => Devise.friendly_token[0,20]
-      })
-      user.provider = auth.provider
-      user.uid  = auth.uid
-      user.skip_confirmation!
-
-      user.save!
-    end
-    user
+  def set_oauth_info(auth)
+    username = auth.extra.raw_info.username
+    name = auth.extra.raw_info.name
+    email = auth.info.email
+    password = Devise.friendly_token[0,20]
+    confirm!
   end
 
+  def confirm!
+    skip_confirmation!
+    save!
+  end
 end

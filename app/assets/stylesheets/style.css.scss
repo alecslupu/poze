@@ -61,6 +61,17 @@
  border-top:1px solid #ccc;
 }
 
+.navbar-inner h1 {
+  display: inline;
+  width: 100px;
+
+}
+
+.navbar-inner h1 .brand {
+  padding: 0px;
+  margin-left: auto;
+}
+
 .navbar .divider-vertical {
   width: 1px;
   height: 40px;
