@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, UserUploader
 
+  has_many :pictures
+
   def familiar_name
     name.include?(' ') ? name.split(' ').first : name.first(10)
   end

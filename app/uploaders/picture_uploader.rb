@@ -35,7 +35,9 @@ class PictureUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
 
   version :original do
-
+    def store_dir
+      "#{Rails.root}/uploads/#{model.class.to_s.underscore}/#{model.created_at.strftime('%Y/%m/%d')}/#{model.id}"
+    end
   end
 
   version :large do
@@ -43,7 +45,7 @@ class PictureUploader < CarrierWave::Uploader::Base
     process :convert => 'jpg'
     process :watermark
     def store_dir
-      "uploads/#{model.class.to_s.underscore}/#{model.created_at.strftime('%Y/%m/%d')}/#{model.id}"
+      "#{Rails.root}/public/uploads/#{model.class.to_s.underscore}/#{model.created_at.strftime('%Y/%m/%d')}/#{model.id}"
     end
   end
   version :normal do
@@ -51,7 +53,7 @@ class PictureUploader < CarrierWave::Uploader::Base
     process :convert => 'jpg'
     process :watermark
     def store_dir
-      "uploads/#{model.class.to_s.underscore}/#{model.created_at.strftime('%Y/%m/%d')}/#{model.id}"
+      "#{Rails.root}/public/uploads/#{model.class.to_s.underscore}/#{model.created_at.strftime('%Y/%m/%d')}/#{model.id}"
     end
   end
   version :thumb do
@@ -59,7 +61,7 @@ class PictureUploader < CarrierWave::Uploader::Base
     process :convert => 'jpg'
     process :watermark
     def store_dir
-      "uploads/#{model.class.to_s.underscore}/#{model.created_at.strftime('%Y/%m/%d')}/#{model.id}"
+      "#{Rails.root}/public/uploads/#{model.class.to_s.underscore}/#{model.created_at.strftime('%Y/%m/%d')}/#{model.id}"
     end
   end
 
@@ -78,12 +80,9 @@ class PictureUploader < CarrierWave::Uploader::Base
   end
 
 
-
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
-  def store_dir
-    "#{Rails.root}/uploads/#{model.class.to_s.underscore}/#{model.created_at.strftime('%Y/%m/%d')}/#{model.id}"
-  end
+
 
   def remember_cache_id(new_file)
     @cache_id_was = cache_id
@@ -98,7 +97,7 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   def exif_info
     if (@file)
-      self.model.exif_info = ::Magick::Image::read(@file.file).first
+      # self.model.exif_info = ::Magick::Image::read(@file.file).first
     end
   end
 

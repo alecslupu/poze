@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   end
 
 
+  namespace :private do
+    resources :pictures
+  end
+
   get '/about', to: 'home#index', as: :about
   get '/tos', to: 'home#index', as: :tos
   get '/privacy', to: 'home#index', as: :privacy
