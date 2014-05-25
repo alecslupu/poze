@@ -34,10 +34,8 @@ class PictureUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
 
-  version :original do
-    def store_dir
-      "#{Rails.root}/uploads/#{model.class.to_s.underscore}/#{model.created_at.strftime('%Y/%m/%d')}/#{model.id}"
-    end
+  def store_dir
+    "#{Rails.root}/uploads/#{model.class.to_s.underscore}/#{model.created_at.strftime('%Y/%m/%d')}/#{model.id}"
   end
 
   version :large do

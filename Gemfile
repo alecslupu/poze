@@ -27,6 +27,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
 gem 'friendly_id'
+gem 'kaminari'
 
 group :development do
   gem 'better_errors'

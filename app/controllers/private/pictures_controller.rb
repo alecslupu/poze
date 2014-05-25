@@ -41,8 +41,10 @@ class Private::PicturesController < AuthenticatedController
   private
 
   def post_params
-    params[:picture][:image] = params[:picture][:image].first if params[:picture] and params[:picture][:image].is_a?(Array)
-    params.fetch(:picture).permit(:image)
+    [:image, :name].each do |key|
+      params[:picture][key] = params[:picture][key].first if params[:picture] and params[:picture][key].is_a?(Array)
+    end
+    params.require(:picture).permit(:image, :name)
   end
 
 
