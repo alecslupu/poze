@@ -8,6 +8,11 @@ Rails.application.routes.draw do
     get '/users/auth/:provider' => 'user/omniauth_callbacks#passthru'
   end
 
+  resources :pictures, only: [ :show ] do
+    collection do
+      get '/newest/:page', page: 1, action: :newest, as: :newest
+    end
+  end
 
   namespace :private do
     resources :pictures
@@ -16,7 +21,7 @@ Rails.application.routes.draw do
   get '/about', to: 'home#index', as: :about
   get '/tos', to: 'home#index', as: :tos
   get '/privacy', to: 'home#index', as: :privacy
-  root to: 'home#index'
+  root to: 'pictures#newest'
 
 end
 

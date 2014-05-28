@@ -27,15 +27,16 @@
     </header>
     <main role="main">
       <div class="container">
-        <div class="row">
           <% unless flash.empty? %>
-            <div class="span12">
-              <%= render 'layouts/messages' unless devise_controller? %>
+            <div class="row">
+              <div class="span12">
+                <%= render 'layouts/messages' unless devise_controller? %>
+              </div>
             </div>
           <% end %>
 
           <%= yield %>
-        </div>
+
       </div>
     </main>
 

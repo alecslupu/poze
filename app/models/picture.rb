@@ -4,6 +4,7 @@ class Picture < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  scope :recent, lambda { order("#{self.table_name}.id DESC") }
 
   mount_uploader :image, PictureUploader
 
