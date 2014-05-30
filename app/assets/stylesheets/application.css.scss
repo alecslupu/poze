@@ -10,24 +10,24 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require fontawesome
- *= require fancybox/jquery.fancybox
- *= require fancybox/jquery.fancybox-buttons
- *= require fancybox/jquery.fancybox-thumbs
- *= require fileupload/jquery.fileupload
- *= require fileupload/jquery.fileupload-ui
+ * = require fontawesome
+ * = require fancybox/jquery.fancybox
+ * = require fancybox/jquery.fancybox-buttons
+ * = require fancybox/jquery.fancybox-thumbs
+ * = require fileupload/jquery.fileupload
+ * = require fileupload/jquery.fileupload-ui
 
 
- *= require blueimp/blueimp-gallery
- *= require blueimp/blueimp-gallery-indicator
- *= require blueimp/blueimp-gallery-video
- *= require_self
+ * = require blueimp/blueimp-gallery
+ * = require blueimp/blueimp-gallery-indicator
+ * = require blueimp/blueimp-gallery-video
+ * = require_self
  */
 
 
- @import "bootstrap";
+ // @import "bootstrap";
 
- @import "style";
- @import "icon-style";
+ // @import "style";
+ // @import "icon-style";
 
- @import "bootstrap-responsive";
+ // @import "bootstrap-responsive";

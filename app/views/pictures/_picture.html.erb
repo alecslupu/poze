@@ -21,7 +21,17 @@
       </ul>
   </div>
   <div class="tags-galery">
-      <p><i class="icon-tags"></i> Tags : <a href="#">Building</a>, <a href="#">Tower</a>,
-      <a href="#">Eifel</a>, <a href="#">Wonders of the world</a>, <a href="#">Miracle</a></p>
+    <p><i class="icon-tags"></i>
+      <% if picture.tags.size > 0 %>
+        Tags :
+        <%= raw picture.tags.first(5).map { |t| link_to t, tag_path(t) }.join(', ') %>
+      <% else %>
+        no tag present
+      <% end %>
+        <!--
+        <a href="#">Building</a>, <a href="#">Tower</a>,
+      <a href="#">Eifel</a>, <a href="#">Wonders of the world</a>, <a href="#">Miracle</a>
+    -->
+    </p>
   </div>
 </div>
